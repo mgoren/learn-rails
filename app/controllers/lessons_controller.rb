@@ -1,18 +1,15 @@
 class LessonsController < ApplicationController
 
-  def index
-    @lessons = Lesson.all
-  end
-
   def new
     @lesson = Lesson.new
+    @sections = Section.all
   end
 
   def create
     @lesson = Lesson.new(lessons_params)
     if @lesson.save
       flash[:notice] = "Lesson added"
-      redirect_to lesson_path(@lesson)
+      redirect_to chapters_path
     else
       render :new
     end
@@ -46,7 +43,7 @@ class LessonsController < ApplicationController
 
 private
   def lessons_params
-    params.require(:lesson).permit(:name, :content)
+    params.require(:lesson).permit(:name, :content, :section_id)
   end
 
 end

@@ -1,0 +1,23 @@
+<h1>Stuff</h1>
+
+<ul>
+  <% @chapters.each do |chapter| %>
+    <li>
+      <%= chapter.name %>
+      <ul>
+        <% chapter.sections.each do |section| %>
+          <li>
+            <%= section.name %>
+            <ul>
+              <% section.lessons.each do |lesson| %>
+              <li>
+                <%= lesson.name %>
+              </li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

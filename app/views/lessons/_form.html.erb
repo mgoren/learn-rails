@@ -12,5 +12,10 @@
     <%= f.text_area :content, {class: "col-md-8"} %>
   </div>
 
+  <div class="form-group">
+    <%= f.collection_select :section_id, @sections, :id, :name, prompt: true %>
+  </div>
+
+
   <%= f.submit class: "col-md-offset-2" %>
 <% end %>

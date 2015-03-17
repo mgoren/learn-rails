@@ -1,5 +1,6 @@
 class Lesson < ActiveRecord::Base
   validates :name, :content, presence: true
+  belongs_to :section
 
   before_create do
     self.number = Lesson.all.length + 1

@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  root to: 'lessons#index'
-  resources :lessons
+  root to: 'chapters#index'
+  resources :chapters do
+    resources :sections, except: [:new, :create] do
+      resources :lessons, except: [:new, :create]
+    end
+  end
+
+  resources :sections, only: [:new, :create]
+  resources :lessons, only: [:new, :create]
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,11 @@
+<%= render 'layouts/errors', object: @chapter %>
+
+<%= form_for [@chapter], :html => { :class => "form-horizontal" } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, {class: "col-md-2"} %>
+    <%= f.text_field :name, {class: "col-md-8"} %>
+  </div>
+
+  <%= f.submit class: "col-md-offset-2" %>
+<% end %>
