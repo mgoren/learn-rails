@@ -48,6 +48,8 @@ class LessonsController < ApplicationController
     redirect_to chapters_path
   end
 
+  
+
 private
   def lessons_params
     params.require(:lesson).permit(:name, :content, :section_id)

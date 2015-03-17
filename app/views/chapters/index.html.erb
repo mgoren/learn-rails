@@ -9,7 +9,7 @@
           <li>
             <%= section.name %>
             <ul>
-              <% section.lessons.each do |lesson| %>
+              <% section.lessons.in_order.each do |lesson| %>
               <li>
                 <%= link_to lesson.name, chapter_section_lesson_path(chapter, section, lesson) %>
               </li>
