@@ -2,3 +2,5 @@
 <p>
   <%= @lesson.content %>
 </p>
+
+<%= link_to "previous", chapter_section_lesson_path(@chapter, @section, @lesson.previous) %> | <%= link_to "next", chapter_section_lesson_path(@chapter, @section, @lesson.next) %>

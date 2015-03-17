@@ -1,24 +1,31 @@
 class Lesson < ActiveRecord::Base
   validates :name, :content, presence: true
   belongs_to :section
+  scope :in_order, -> { order("number ASC") }
+  scope :desc_order, -> { order("number DESC") }
 
   before_create do
-    self.number = Lesson.all.length + 1
+    if Lesson.any?
+      self.number = Lesson.last.number + 1
+    else
+      self.number = 1
+    end
   end
 
   def next
-    next_number = self.number + 1
-    if next_number > Lesson.all.length
-      next_number = 1
+    if self == self.section.lessons.last
+      return self.section.lessons.first
+    else
+      return self.section.lessons.in_order.where("number > ?", self.number).first
     end
-    return Lesson.find_by number: next_number
   end
 
   def previous
-    previous_number = self.number - 1
-    if previous_number < 1
-      previous_number = Lesson.all.length
+    if self == self.section.lessons.first
+      return self.section.lessons.last
+    else
+      return self.section.lessons.desc_order.where("number < ?", self.number).first
     end
-    return Lesson.find_by number: previous_number
   end
+
 end
