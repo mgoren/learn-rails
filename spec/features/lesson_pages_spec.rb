@@ -41,5 +41,20 @@ describe 'the edit lesson process' do
     expect(page).to have_content 'Good job'
   end
 
+  it 'moves to the next lesson' do
+    lesson1 = Lesson.create(:name => "foo", :content => "bar")
+    lesson2 = Lesson.create(:name => "cat", :content => "smurf")
+    visit lesson_path(lesson1)
+    click_on 'next'
+    expect(page).to have_content 'smurf'
+  end
+
+  it 'moves to the previous lesson' do
+    lesson1 = Lesson.create(:name => "foo", :content => "bar")
+    lesson2 = Lesson.create(:name => "cat", :content => "smurf")
+    visit lesson_path(lesson1)
+    click_on 'previous'
+    expect(page).to have_content 'smurf'
+  end
 
 end
