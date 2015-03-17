@@ -1,5 +1,5 @@
 class Lesson < ActiveRecord::Base
-  validates :name, :content, presence: true
+  validates :name, :section_id, :content, presence: true
   belongs_to :section
   scope :in_order, -> { order("number ASC") }
   scope :desc_order, -> { order("number DESC") }

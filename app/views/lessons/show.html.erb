@@ -1,6 +1,6 @@
 <h1><%= link_to @lesson.name, edit_chapter_section_lesson_path(@chapter, @section, @lesson) %> [<%= link_to "x", chapter_section_lesson_path, data: {confirm: "Are you sure?", method: "delete"} %>]</h1>
-<p>
-  <%= @lesson.content %>
-</p>
+<div class="well">
+  <p><%= @lesson.content %></p>
+</div>
 
 <%= link_to "previous", chapter_section_lesson_path(@chapter, @section, @lesson.previous) %> | <%= link_to "next", chapter_section_lesson_path(@chapter, @section, @lesson.next) %>
