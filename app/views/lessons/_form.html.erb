@@ -1,6 +1,6 @@
 <%= render 'layouts/errors', object: @lesson %>
 
-<%= form_for [@lesson], :html => { :class => "form-horizontal" } do |f| %>
+<%= form_for [@chapter, @section, @lesson], :html => { :class => "form-horizontal" } do |f| %>
 
   <div class="form-group">
     <%= f.label :name, {class: "col-md-2"} %>

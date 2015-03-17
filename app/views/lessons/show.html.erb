@@ -1,5 +1,4 @@
-<h1><%= link_to @lesson.name, edit_lesson_path(@lesson) %> [<%= link_to "x", lesson_path, data: {confirm: "Are you sure?", method: "delete"} %>]</h1>
+<h1><%= link_to @lesson.name, edit_chapter_section_lesson_path(@chapter, @section, @lesson) %> [<%= link_to "x", chapter_section_lesson_path, data: {confirm: "Are you sure?", method: "delete"} %>]</h1>
 <p>
   <%= @lesson.content %>
 </p>
-<%= link_to "previous", lesson_path(@lesson.previous) %> | <%= link_to "next", lesson_path(@lesson.next) %>

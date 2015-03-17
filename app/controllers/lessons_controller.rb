@@ -16,19 +16,26 @@ class LessonsController < ApplicationController
   end
 
   def show
+    @chapter = Chapter.find(params[:chapter_id])
+    @section = Section.find(params[:section_id])
     @lesson = Lesson.find(params[:id])
   end
 
   def edit
+    @chapter = Chapter.find(params[:chapter_id])
+    @section = Section.find(params[:section_id])
     @lesson = Lesson.find(params[:id])
+    @sections = Section.all
   end
 
   def update
+    @chapter = Chapter.find(params[:chapter_id])
+    @section = Section.find(params[:section_id])
     @lesson = Lesson.find(params[:id])
     @lesson.update(lessons_params)
     if @lesson.save
       flash[:notice] = 'Cool. Good job updating.'
-      redirect_to lesson_path(@lesson)
+      redirect_to chapter_section_lesson_path(@chapter, @section, @lesson)
     else
       render :edit
     end
@@ -38,7 +45,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
     @lesson.destroy
     flash[:notice] = "Killed it."
-    redirect_to lessons_path
+    redirect_to chapters_path
   end
 
 private
